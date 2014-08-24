@@ -1,0 +1,359 @@
+def start
+		prompt do
+			say "You have found the place the legends spoke of, a pool of glass in the jungle floor. You stand in it's center. Press 1 to Jump"
+
+			route 1 => :fall
+	end
+end
+
+def fall
+	say "The glass shatters and you plummet into the lost Mall of The Ancients."
+	redirect : Entrance
+	end
+end
+
+def holister
+	if !self.player.visited {"holister"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"holister"} = true
+
+			route 1 => :builda_bear
+			route 2 => :restrooms
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :builda_bear
+			route 2 => :restrooms
+	end
+end
+
+def restrooms
+prompt do
+if !self.game.visited{"restrooms"}
+say "the smell is unbearable. A sign invites you to rest in this room. Why would you do that? Press 1 to head west. Press 2 to go east. Press 3 to go south. "
+self.game.visited{"restrooms"} = true
+route 1 => :holister
+route 2 => :escalator
+route 3 => :wet_seal
+pause
+pause 
+pause
+say "you feel nauseous and faint."
+pause 
+#end ? To end the 'prompt do' before the redirect??
+redirect : dead
+else
+say "the vile restrooms. 
+Press 1 to head west. Press 2 to go east. Press 3 to go south. "
+route 1 => :holister
+route 2 => :escalator
+route 3 => :wet_seal
+pause
+pause 
+pause
+say "you feel nauseous and faint.
+pause 
+redirect : dead
+end
+end
+
+def dead
+say "you died a miserable death in a shopping Mall. Just like your guidance councillor predicted. How sad. Please hold the line to start over"
+end
+#probably needs something else here to make it hang up?
+
+def escalator
+	if !self.player.visited {"escalator"} 
+		prompt do
+			say "you see a staircase powered by an ancient mysterious technology. It churns unceasingly downwards. A thin chord crossed the top with a sign that reads, cleaning in progress, no entry. It is impassable. Press 1 to go west. Press 2 to go east."
+		self.game.visited{"escalator"} = true
+
+			route 1 => :restrooms
+			route 2 => :movie_theater
+
+	else
+		prompt do
+			say "you are at the useless escalator. Press 1 to go west. Press two to go east." 
+			
+			route 1 => :restrooms
+			route 2 => :movie_theater
+	end
+end
+
+def movie_theater
+	if !self.player.visited {"movie_theater"} 
+		prompt do
+			say "press 1 to go west. Press 2 to go south. Press 3 for movie listings in your local area"
+		self.game.visited{"movie_theater"} = true
+
+			route 1 => :escalator
+			route 2 => :railing
+			route 3 => :read_posters
+
+	else
+		prompt do
+			say "press 1 to go west. Press 2 to go south. Press 3 for movie listings in your local area" 
+			
+			route 1 => :escalator
+			route 2 => :railing
+			route 3 => :read_posters
+	end
+end
+def read_posters
+	if !self.player.visited {"read_posters"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"read_posters"} = true
+
+			route 1 => :movie_theater
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :movie_theater
+	end
+end
+def builda_bear
+	if !self.player.visited {"builda_bear"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"builda_bear"} = true
+
+			route 1 => :holister
+			route 2 => :wet_seal
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :holister
+			route 2 => :wet_seal
+	end
+end
+def railing
+	if !self.player.visited {"railing"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"railing"} = true
+
+			route 1 => :movie_theater
+			route 2 => :golfsmith
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :movie_theater
+			route 2 => :golfsmith
+	end
+end
+
+def entrance
+	if !self.player.visited {"entrance"} 
+		prompt do
+			say "You stand in a pool of light surrounded by shards of broken glass. Press 1 to go north. Press 2 to go east."
+		self.game.visited{"entrance"} = true
+
+			route 1 => :wet_seal
+			route 2 => :sephora
+
+	else
+		prompt do
+			say "You stand in a pool of light surrounded by shards of broken glass. Press 1 to go north. Press 2 to go east." 
+			
+			route 1 => :wet_seal
+			route 2 => :sephora
+	end
+end
+def xxx
+	if !self.player.visited {"sephora"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"sephora"} = true
+
+			route 1 => :entrance
+			route 2 => :rei_up
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :entrance
+			route 2 => :rei_up
+	end
+end
+def golfsmith
+	if !self.player.visited {"golfsmith"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"golfsmith"} = true
+
+			route 1 => :railing
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :railing
+	end
+end
+def rei_up
+	if !self.player.visited {"rei_up"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"rei_up"} = true
+
+			route 1 => :sephora
+			route 2 => :rei_down
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :sephora
+			route 2 => :rei_down
+	end
+end
+#lower floor rooms
+
+def apple_store
+	if !self.player.visited {"applestore"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"apple_store"} = true
+
+			route 1 => :food_court_west
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :food_court_west
+	end
+end
+
+def fountain
+	if !self.player.visited {"food_court_west"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"food_court_west"} = true
+
+			route 1 => :fountain
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :fountain
+	end
+end
+
+def fountain
+	if !self.player.visited {"fountain"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"fountain"} = true
+
+			route 1 => :food_court_west
+			route 2 => :food_court_east
+			route 3 => :yankee_candle
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :food_court_west
+			route 2 => :food_court_east
+			route 3 => :yankee_candle
+	end
+end
+
+def food_court_east
+	if !self.player.visited {"food_court_east"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"food_court_east"} = true
+
+			route 1 => :fountain
+			route 2 => :spencers_gifts
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :fountain
+			route 2 => :spencers_gifts
+	end
+end
+
+def yankee_candle
+	if !self.player.visited {"yankee_candle"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"yankee_candle"} = true
+
+			route 1 => :fountain
+			route 2 => :rei_down
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :fountain
+			route 2 => :rei_down
+	end
+end
+
+def spencers_gifts
+	if !self.player.visited {"spencers_gifts"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"spencers_gifts"} = true
+
+			route 1 => :food_court_east
+			route 2 => :access_tunnel
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :food_court_east
+			route 2 => :access_tunnel
+	end
+end
+def rei_down
+	if !self.player.visited {"rei_down"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"rei_down"} = true
+
+			route 1 => :yankee_candle
+			route 2 => :rei_up
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :yankee_candle
+			route 2 => :rei_up
+	end
+end
+def access_tunnel
+	if !self.player.visited {"access_tunnel"} 
+		prompt do
+			say "xxx"
+		self.game.visited{"access_tunnel"} = true
+
+			route 1 => :wasteland
+
+	else
+		prompt do
+			say "xxxx" 
+			
+			route 1 => :wasteland
+	end
+end
