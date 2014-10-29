@@ -103,7 +103,7 @@ class Mall
   	    say "You are back at the entrance. To go to the Wet Seal, press 1. To go to Sephora, press 2."
   	  end
   	  
-  	  route 1 => :mall_wet_seal
+  	  route 1 => :wet_seal
   	  route 2 => :mall_sephora
   	end
   end
@@ -126,6 +126,22 @@ class Mall
       route 1 => :mall_attempt_rei_upper
       route 2 => :mall_entrance
       route 3 => :mall_sephora_makeup_activated
+    end
+  end
+  
+  def wet_seal
+  	prompt do
+  	  if !self.game.visitedWetSeal
+  	    say "There is no actual Seal here."
+  	    self.game.visitedWetSeal = true
+  	  else 
+  	    say "You are in Wet Seal."
+  	  end
+  	  
+  	  say "To venture into the mysterious rooms of rest, press 1. To return to the entrance, press 2."
+  	  
+      route 1 => :restroooms
+      route 2 => :mall_entrance
     end
   end
   
