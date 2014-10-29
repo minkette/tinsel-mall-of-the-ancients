@@ -272,7 +272,7 @@ class Mall
       end
   	else
   		prompt do
-  			say "you are at the useless escalator. Press 1 to go west. Press two to go east." 
+        say "you are at the useless escalator. Press 1 to go west. Press two to go east." 
   			
   			route 1 => :restrooms
   			route 2 => :movie_theater
@@ -284,7 +284,7 @@ class Mall
   	if !self.player.visitedMovieTheater 
   		prompt do
   			say "press 1 to go west. Press 2 to go south. Press 3 for movie listings in your local area"
-  		self.game.visitedMovieTheater = true
+  		  self.game.visitedMovieTheater = true
   
   			route 1 => :escalator
   			route 2 => :railing
